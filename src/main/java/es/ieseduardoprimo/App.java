@@ -5,6 +5,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -16,6 +17,9 @@ import javax.xml.transform.stream.StreamResult;
 import org.w3c.dom.Attr;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
+
+import es.ieseduardoprimo.model.Hotel;
+import es.ieseduardoprimo.stream.ConsultasHotel;
 
 
 
@@ -43,6 +47,12 @@ public final class App {
 
             sentencia = con.prepareStatement(sentenciaSQL);
             resultado = sentencia.executeQuery();
+
+            ConsultasHotel ch = new ConsultasHotel();
+            ArrayList<Hotel> listadoHoteles = ch.getListaHotels(resultado);
+            System.out.println("Filtrar solo nombres de hoteles");
+            listadoHoteles.stream().map((p)->p.getNombre()).forEach(System.out::println);
+            System.out.println("Filtrado finalizado");
 
             String id,nombre,telefono;
             while (resultado.next()) {
