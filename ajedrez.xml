@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<ajedrez>
+    <hotels id="1">
+        <nombre>Hotel 1</nombre>
+        <telefono>654321098</telefono>
+    </hotels>
+    <hotels id="2">
+        <nombre>Hotel 2</nombre>
+        <telefono>678901234</telefono>
+    </hotels>
+    <media id="1">
+        <nombre>Televisión</nombre>
+    </media>
+    <media id="2">
+        <nombre>Radio</nombre>
+    </media>
+    <media id="3">
+        <nombre>Vídeo</nombre>
+    </media>
+    <media id="4">
+        <nombre>Internet</nombre>
+    </media>
+    <rooms id="01A">
+        <hotel_id>1</hotel_id>
+    </rooms>
+    <rooms id="01B">
+        <hotel_id>1</hotel_id>
+    </rooms>
+    <rooms id="02A">
+        <hotel_id>1</hotel_id>
+    </rooms>
+    <rooms id="01A">
+        <hotel_id>2</hotel_id>
+    </rooms>
+    <rooms id="01B">
+        <hotel_id>2</hotel_id>
+    </rooms>
+    <rooms id="01C">
+        <hotel_id>2</hotel_id>
+    </rooms>
+</ajedrez>
