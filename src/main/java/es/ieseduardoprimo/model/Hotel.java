@@ -6,13 +6,12 @@ import jakarta.persistence.OneToMany;
 
 public class Hotel {
     
-    private long id;
+    private int id;
     
     private String nombre;
     private int telefono;
 
     private Collection<Sala> salas;
-    //Falta el metodo addSalas
 
     @Override
     public String toString() {
@@ -24,7 +23,7 @@ public class Hotel {
      * @param nombre
      * @param telefono
      */
-    public Hotel(long id, String nombre, int telefono) {
+    public Hotel(int id, String nombre, int telefono) {
         this.id = id;
         this.nombre = nombre;
         this.telefono = telefono;
@@ -32,13 +31,13 @@ public class Hotel {
     /**
      * @return the id
      */
-    public long getId() {
+    public int getId() {
         return id;
     }
     /**
      * @param id the id to set
      */
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
     /**
@@ -69,6 +68,13 @@ public class Hotel {
     @OneToMany(mappedBy = "hotel")
     public Collection<Sala> getSalas(){
         return salas;
+    }
+
+    /**
+     * @param salas the salas to set
+     */
+    public void setSalas(Collection<Sala> salas) {
+        this.salas = salas;
     }
 
 }

@@ -37,7 +37,7 @@ public final class App {
 
         try {
 
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/ajedrez", "Jaime", "root");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/ajedrez", "root", "root");
             DocumentBuilderFactory  dbf = DocumentBuilderFactory.newInstance();
             DocumentBuilder db = dbf.newDocumentBuilder();
             Document doc = db.newDocument();

@@ -18,10 +18,17 @@ public class Sala {
     public String toString() {
         return "Sala [id=" + id + ", hotel=" + hotel + "]";
     }
-//Falta añadir el metodo addMedia
+    
     private Collection<Media> media;
     @ManyToMany()
     @JoinTable(name = "Rooms_Media")
+
+    /**
+     * @param media the media to set
+     */
+    public void setMedia(Collection<Media> media) {
+        this.media = media;
+    }
 
     public Collection<Media> getMedia(){
         return media;
