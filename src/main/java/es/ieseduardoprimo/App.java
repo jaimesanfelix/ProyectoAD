@@ -24,7 +24,9 @@ import es.ieseduardoprimo.stream.ConsultasHotel;
 
 
 public final class App {
-    
+    //Acabar comentarios
+    //Primero hacer el ejercicio 4 JDBC
+    //Despues el resto sin importar el orden
     public static void main(String[] args) {
 
         System.out.println("Vamos a generar XML a partir de la base de datos ajedrez");
@@ -35,7 +37,7 @@ public final class App {
 
         try {
 
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/ajedrez", "root", "root");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/ajedrez", "Jaime", "root");
             DocumentBuilderFactory  dbf = DocumentBuilderFactory.newInstance();
             DocumentBuilder db = dbf.newDocumentBuilder();
             Document doc = db.newDocument();

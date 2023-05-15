@@ -9,3 +9,4 @@ public interface RepositoryManager {
     MediaRepository getMediaRepository();
     SalaRepository  getSalaRepository();
 }
+//Falta crear la clase XMLRepositoryManager

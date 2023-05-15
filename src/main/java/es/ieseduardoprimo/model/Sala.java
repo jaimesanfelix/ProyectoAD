@@ -18,7 +18,7 @@ public class Sala {
     public String toString() {
         return "Sala [id=" + id + ", hotel=" + hotel + "]";
     }
-
+//Falta añadir el metodo addMedia
     private Collection<Media> media;
     @ManyToMany()
     @JoinTable(name = "Rooms_Media")

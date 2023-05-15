@@ -12,6 +12,7 @@ public class Hotel {
     private int telefono;
 
     private Collection<Sala> salas;
+    //Falta el metodo addSalas
 
     @Override
     public String toString() {
