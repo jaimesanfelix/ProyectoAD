@@ -10,8 +10,6 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class XmlHotelRepository implements HotelRepository {
 
-    @NonNull
-    private Connection con;
 
     @Override
     public List<Hotel> findAll() {

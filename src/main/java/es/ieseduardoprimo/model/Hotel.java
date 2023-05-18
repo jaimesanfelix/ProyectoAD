@@ -2,13 +2,25 @@ package es.ieseduardoprimo.model;
 
 import java.util.Collection;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
+import lombok.NonNull;
 
+@Entity
+@Table(name = "hotels")
 public class Hotel {
     
+    @Id
     private int id;
     
+    @Column(name = "name")
+    @NonNull
     private String nombre;
+    @Column(name = "telephone")
+    @NonNull
     private int telefono;
 
     private Collection<Sala> salas;

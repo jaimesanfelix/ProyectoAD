@@ -2,11 +2,22 @@ package es.ieseduardoprimo.model;
 
 import java.util.Collection;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.Table;
+import lombok.NonNull;
 
+@Entity
+@Table(name = "media")
 public class Media {
+
+    @Id
     private Integer id;
 
+    @Column(name = "name")
+    @NonNull
     private String nombre;
 
     private Collection<Sala> salas;

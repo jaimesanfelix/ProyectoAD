@@ -9,7 +9,7 @@ import es.ieseduardoprimo.model.Hotel;
 
 public class ConsultasHotel {
     
-    public ArrayList<Hotel> getListaHotels(ResultSet listaHoteles) throws SQLException{
+   /*  public ArrayList<Hotel> getListaHotels(ResultSet listaHoteles) throws SQLException{
         ArrayList<Hotel> hoteles = new ArrayList<>();
 
         while (listaHoteles.next()) {
@@ -17,6 +17,6 @@ public class ConsultasHotel {
             hoteles.add(hotel);
         }
         return hoteles;
-    }
+    } */
 
 }

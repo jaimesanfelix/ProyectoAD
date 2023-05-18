@@ -3,15 +3,21 @@ package es.ieseduardoprimo.model;
 import java.util.Collection;
 import java.util.List;
 
-
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
 
+@Entity
+@Table(name = "rooms")
 public class Sala {
 
+    @Id
     private Integer id;
+
     private Hotel hotel;
 
     @Override
@@ -21,7 +27,7 @@ public class Sala {
     
     private Collection<Media> media;
     @ManyToMany()
-    @JoinTable(name = "Rooms_Media")
+    @JoinTable(name = "rooms_media")
 
     /**
      * @param media the media to set

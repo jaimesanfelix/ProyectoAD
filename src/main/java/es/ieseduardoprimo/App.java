@@ -50,11 +50,11 @@ public final class App {
             sentencia = con.prepareStatement(sentenciaSQL);
             resultado = sentencia.executeQuery();
 
-            ConsultasHotel ch = new ConsultasHotel();
+            /* ConsultasHotel ch = new ConsultasHotel();
             ArrayList<Hotel> listadoHoteles = ch.getListaHotels(resultado);
             System.out.println("Filtrar solo nombres de hoteles");
             listadoHoteles.stream().map((p)->p.getNombre()).forEach(System.out::println);
-            System.out.println("Filtrado finalizado");
+            System.out.println("Filtrado finalizado"); */
 
             String id,nombre,telefono;
             while (resultado.next()) {
