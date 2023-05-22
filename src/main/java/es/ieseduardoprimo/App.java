@@ -26,8 +26,10 @@ import es.ieseduardoprimo.stream.ConsultasHotel;
 
 public final class App {
     //Acabar comentarios
-    //Primero hacer el ejercicio 4 JDBC
-    //Despues el resto sin importar el orden
+    //Completar InMemoryRepositoryManager, InMemoryHotelRepository y los InMemoryRepository de media y sala
+    //Crear metodos para cada apartado del ejercicio 3 Streams
+    //No sacar nada por pantalla en el ejercicio 3 solo recoger los datos con los metodos para utilizarlos mas adelante
+    
     public static void main(String[] args) {
 
         System.out.println("Vamos a generar XML a partir de la base de datos ajedrez");
