@@ -1,5 +1,0 @@
-Rec. 05 - JPA
-Añade las anotaciones necesarias a los Modelos.
-Crea una implementación de las interfaces Repository basada en JPA.
-Crea también el RepositoryManager correspondiente.
-Incluye el archivo de configuración de JPA.

@@ -1,5 +1,6 @@
 package es.ieseduardoprimo.model;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
@@ -16,50 +17,62 @@ import jakarta.persistence.Table;
 public class Sala {
 
     @Id
-    private Integer id;
+    private String id;
 
     private Hotel hotel;
+
+    private List<Media> listaMedias = new ArrayList<Media>();
 
     @Override
     public String toString() {
         return "Sala [id=" + id + ", hotel=" + hotel + "]";
     }
     
-    private Collection<Media> media;
+
     @ManyToMany()
     @JoinTable(name = "rooms_media")
 
     /**
      * @param media the media to set
      */
-    public void setMedia(Collection<Media> media) {
-        this.media = media;
+    
+
+    public void setMedia(Media m){
+        listaMedias.add(m);
     }
 
-    public Collection<Media> getMedia(){
+    public int getIdMedia(int media){
         return media;
+    }
+
+    public List<Media> getListaMedia(){
+        return listaMedias;
     }
 
     /**
      * @param id
      * @param hotel
      */
-    public Sala(Integer id, Hotel hotel) {
+    public Sala(String id, Hotel hotel) {
         this.id = id;
         this.hotel = hotel;
+    }
+
+    public Sala(String id){
+        this.id = id;
     }
 
     /**
      * @return the id
      */
-    public Integer getId() {
+    public String getId() {
         return id;
     }
 
     /**
      * @param id the id to set
      */
-    public void setId(Integer id) {
+    public void setId(String id) {
         this.id = id;
     }
 

@@ -1,6 +1,8 @@
 package es.ieseduardoprimo.model;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -24,6 +26,7 @@ public class Hotel {
     private int telefono;
 
     private Collection<Sala> salas;
+    private List<Sala> listaSalas = new ArrayList<Sala>();
 
     @Override
     public String toString() {
@@ -82,11 +85,19 @@ public class Hotel {
         return salas;
     }
 
+    public List<Sala> getListaSalas(){
+        return listaSalas;
+    }
+
     /**
      * @param salas the salas to set
      */
     public void setSalas(Collection<Sala> salas) {
         this.salas = salas;
+    }
+
+    public void setSala(Sala s){
+        listaSalas.add(s);
     }
 
 }
