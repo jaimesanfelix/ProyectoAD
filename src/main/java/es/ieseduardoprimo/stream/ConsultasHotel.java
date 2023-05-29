@@ -2,7 +2,8 @@ package es.ieseduardoprimo.stream;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Stream;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 import es.ieseduardoprimo.model.Hotel;
 import es.ieseduardoprimo.model.Media;
@@ -10,7 +11,8 @@ import es.ieseduardoprimo.model.Sala;
 
 public class ConsultasHotel {
 
-    public void procesarStreams() {
+
+    public List<Hotel> cargarDatosHoteles(){
 
         Hotel h1 = new Hotel(1, "hotel1", 111111);
         Hotel h2 = new Hotel(2, "hotel2", 222222);
@@ -20,21 +22,6 @@ public class ConsultasHotel {
         listaHoteles.add(h1);
         listaHoteles.add(h2);
         listaHoteles.add(h3);
-
-        System.out.println("Stream de listados");
-        listaHoteles.stream().forEach(System.out::println);
-        System.out.println("Fin de stream de listados");
-        System.out.println("");
-
-        System.out.println("Stream de nombre de hoteles");
-        listaHoteles.stream().map((h) -> h.getNombre()).forEach(System.out::println);
-        System.out.println("Fin de stream de nombre de hoteles");
-        System.out.println("");
-
-        System.out.println("Contar el numero de hoteles: " + listaHoteles.stream().count());
-        System.out.println("Fin de contar numero de hoteles");
-        System.out.println("");
-
 
         Sala s1 = new Sala("01A");
         Sala s2 = new Sala("02B");
@@ -46,9 +33,9 @@ public class ConsultasHotel {
         h1.setSala(s3);
         h1.setSala(s4);
 
-        h2.setSala(s1);
+        //h2.setSala(s1);
         h2.setSala(s2);
-        h2.setSala(s3);
+        //h2.setSala(s3);
 
         h3.setSala(s1);
         h3.setSala(s2);
@@ -71,6 +58,44 @@ public class ConsultasHotel {
         s3.setMedia(m1);
         s3.setMedia(m3);
 
+        s4.setMedia(m1);
+
+        return listaHoteles;
+
+    }
+
+
+    public List<String> getNombreHoteles(List<Hotel> listaHoteles){
+        return listaHoteles.stream().map(h -> h.getNombre()).collect(Collectors.toList());
+    }
+
+    public List<Media> getNombreHotelesConTV(List<Hotel> listaHoteles){
+
+        /* Map<String, List<Sala> > hotelsMap = listaHoteles.stream().collect(
+            Collectors.toMap(Hotel::getNombre, Hotel::getListaSalas));
+            System.out.println("hotels: " + hotelsMap); */
+
+        return listaHoteles.stream().map(h -> h.getListaSalas()).flatMap(s -> s.stream()).map(s -> s.getListaMedia()).flatMap(m -> m.stream()).filter(m -> m.getNombre().equals("Television")).collect(Collectors.toList());
+    }
+
+    public Long getNumeroHabitaciones(List<Hotel> listaHoteles, String nombreHotel){
+        return listaHoteles.stream().filter(h -> h.getNombre().equals(nombreHotel)).map(h -> h.getListaSalas()).flatMap(salas -> salas.stream()).map((Sala s) -> s.getId()).count();
+    }
+
+    public Long getNumeroTotalHabitaciones(List<Hotel> listaHoteles, String nombreHotel){
+        Long hotel1 = getNumeroHabitaciones(listaHoteles, nombreHotel);
+        Long hotel2 = getNumeroHabitaciones(listaHoteles, nombreHotel);
+        Long hotel3 = getNumeroHabitaciones(listaHoteles, nombreHotel);
+
+        Long numeroTotal = hotel1 + hotel2 + hotel3;
+        return numeroTotal;
+    }
+
+
+    public void procesarStreams() {
+
+       /*  listaHoteles.stream().map((h) -> h.getNombre()).forEach(System.out::println);
+
         System.out.println("Stream de nombre de hotel con television");
         listaHoteles.stream().map(h -> h.getListaSalas()).flatMap(s -> s.stream()).filter(s -> s.getIdMedia(1)).map(s -> s.getListaMedia()).flatMap(salas -> salas.stream()).map((Sala s) -> s.getNombre().equals("Television")).forEach(System.out::println);
         System.out.println("Fin de stream de nombre de hotel con television\n");
@@ -87,7 +112,7 @@ public class ConsultasHotel {
         System.out.println("Fin contar habitaciones hotel2\n");
 
         System.out.println("Numero habitaciones por hotel3: " + listaHoteles.stream().filter(h -> h.getId() == 3).map(h -> h.getListaSalas()).flatMap(salas -> salas.stream()).map((Sala s) -> s.getId()).count());
-        System.out.println("Fin contar habitaciones hotel3\n");
+        System.out.println("Fin contar habitaciones hotel3\n"); */
 
     }
 

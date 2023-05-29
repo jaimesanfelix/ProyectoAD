@@ -25,7 +25,7 @@ public class Sala {
 
     @Override
     public String toString() {
-        return "Sala [id=" + id + ", hotel=" + hotel + "]";
+        return "Sala [id=" + id + "]";
     }
     
 

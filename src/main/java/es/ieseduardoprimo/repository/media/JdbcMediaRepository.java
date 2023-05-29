@@ -1,4 +1,4 @@
-package es.ieseduardoprimo.repository.sala;
+package es.ieseduardoprimo.repository.media;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import es.ieseduardoprimo.model.Hotel;
-import es.ieseduardoprimo.model.Sala;
+import es.ieseduardoprimo.model.Media;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 
@@ -26,9 +26,9 @@ public class JdbcMediaRepository implements MediaRepository {
     private Hotel hotel;
     
     @Override
-    public List<Sala> findAll() {
+    public List<Media> findAll() {
         PreparedStatement ps = null;
-        List<Sala> result = new ArrayList<>();
+        List<Media> result = new ArrayList<>();
         ResultSet rs = null;
 
         try {
@@ -47,13 +47,13 @@ public class JdbcMediaRepository implements MediaRepository {
             }
         }
 
-        return (List<Sala>) rs;
+        return (List<Media>) rs;
     }
 
     @Override
-    public Sala findById(Integer id) {
+    public Media findById(Integer id) {
         PreparedStatement ps = null;
-        Sala result = null;
+        Media result = null;
         ResultSet rs = null;
 
         try {
@@ -72,11 +72,11 @@ public class JdbcMediaRepository implements MediaRepository {
             }
         }
 
-        return (Sala) rs;
+        return (Media) rs;
     }
 
     @Override
-    public boolean create(Sala entity) {
+    public boolean create(Media entity) {
         PreparedStatement ps = null;
         boolean created = false;
 
@@ -104,7 +104,7 @@ public class JdbcMediaRepository implements MediaRepository {
     }
 
     @Override
-    public boolean update(Sala entity) {
+    public boolean update(Media entity) {
         PreparedStatement ps = null;
         boolean updated = false;
 

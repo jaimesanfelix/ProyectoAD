@@ -20,6 +20,7 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
 import es.ieseduardoprimo.model.Hotel;
+import es.ieseduardoprimo.model.Media;
 import es.ieseduardoprimo.model.Sala;
 import es.ieseduardoprimo.stream.ConsultasHotel;
 
@@ -60,7 +61,14 @@ public final class App {
             System.out.println("Filtrado finalizado"); */
 
             ConsultasHotel ch = new ConsultasHotel();
-            ch.procesarStreams();
+            System.out.println("/");
+            List<Hotel> listaHoteles = ch.cargarDatosHoteles();
+            List<String> listaNombreHoteles = ch.getNombreHoteles(listaHoteles);
+            List<Media> listaNombreHotelesConTV = ch.getNombreHotelesConTV(listaHoteles);
+            listaNombreHoteles.forEach(System.out::println);
+            System.out.println("\n");
+            listaNombreHotelesConTV.forEach(System.out::println);
+            System.out.println("/");
 
             String id,nombre,telefono;
             while (resultado.next()) {

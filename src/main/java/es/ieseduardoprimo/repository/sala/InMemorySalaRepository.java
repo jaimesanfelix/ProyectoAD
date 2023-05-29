@@ -5,10 +5,12 @@ import java.util.List;
 
 import es.ieseduardoprimo.model.Sala;
 import lombok.NonNull;
+import okhttp3.Call;
+import okhttp3.Response;
 
 public class InMemorySalaRepository implements SalaRepository{
     
-    /* @NonNull
+    @NonNull
     private SalasRest salaService;
 
     @NonNull
@@ -96,16 +98,4 @@ public class InMemorySalaRepository implements SalaRepository{
 
     }
 
-    @Override
-    public boolean create(Sala entity) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'create'");
-    }
-
-    @Override
-    public boolean update(Sala entity) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'update'");
-    }
-*/
 }
