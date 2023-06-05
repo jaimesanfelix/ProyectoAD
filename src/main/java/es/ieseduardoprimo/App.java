@@ -65,10 +65,17 @@ public final class App {
             List<Hotel> listaHoteles = ch.cargarDatosHoteles();
             List<String> listaNombreHoteles = ch.getNombreHoteles(listaHoteles);
             List<Media> listaNombreHotelesConTV = ch.getNombreHotelesConTV(listaHoteles);
+            Long numeroHabitaciones = ch.getNumeroHabitaciones(listaHoteles, "hotel2");
+            String getHotelConMayorNumeroDeHabitaciones = ch.getHotelConMayorNumeroDeHabitaciones(listaHoteles);
+            Long getMedioMasUtilizadoPorHotel = ch.getMedioMasUtilizadoPorHotel(listaHoteles);
             listaNombreHoteles.forEach(System.out::println);
             System.out.println("\n");
             listaNombreHotelesConTV.forEach(System.out::println);
             System.out.println("/");
+            System.out.println("\nEl numero de habitaciones del hotel2 es de " + numeroHabitaciones);
+            System.out.println("\nEl hotel con mas habitaciones es " + getHotelConMayorNumeroDeHabitaciones);
+            System.out.println("\n El medio mas utilizado es: " + getMedioMasUtilizadoPorHotel);
+            
 
             String id,nombre,telefono;
             while (resultado.next()) {

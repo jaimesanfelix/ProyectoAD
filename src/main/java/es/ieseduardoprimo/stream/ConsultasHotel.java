@@ -5,6 +5,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+import com.mysql.cj.x.protobuf.MysqlxDatatypes.Array;
+
 import es.ieseduardoprimo.model.Hotel;
 import es.ieseduardoprimo.model.Media;
 import es.ieseduardoprimo.model.Sala;
@@ -54,9 +56,13 @@ public class ConsultasHotel {
 
         s2.setMedia(m2);
         s2.setMedia(m4);
+        s2.setMedia(m4);
 
         s3.setMedia(m1);
         s3.setMedia(m3);
+        s3.setMedia(m3);
+        s3.setMedia(m3);
+        
 
         s4.setMedia(m1);
 
@@ -89,6 +95,37 @@ public class ConsultasHotel {
 
         Long numeroTotal = hotel1 + hotel2 + hotel3;
         return numeroTotal;
+    }
+
+    private long num;
+    private long numPrevio = 0;
+    String nombreHotel;
+    public String getHotelConMayorNumeroDeHabitaciones(List<Hotel> listaHoteles){
+        List<String> hList = listaHoteles.stream().map(h -> h.getNombre()).collect(Collectors.toList());
+         
+        hList.forEach(h -> {
+            num = getNumeroHabitaciones(listaHoteles, h); 
+            if (numPrevio < num) {
+                numPrevio = num;
+                nombreHotel = h;
+            }
+        });
+        
+          return nombreHotel;
+    }
+
+    Long num1;
+    public Long getMedioMasUtilizadoPorHotel(List<Hotel> listaHoteles){
+        List<String> hList = listaHoteles.stream().map(h -> h.getNombre()).collect(Collectors.toList());
+        List<Media> hListMedia = listaHoteles.stream().map(h -> h.getListaSalas()).flatMap(s -> s.stream()).map(s -> s.getListaMedia()).flatMap(m -> m.stream()).collect(Collectors.toList());
+
+        hList.forEach(h1-> {
+            System.out.println("\nHotel: " + h1);
+            num1 = listaHoteles.stream().filter(h -> h.getNombre().equals(h1)).map(h -> h.getListaSalas()).flatMap(s -> s.stream()).map(s -> s.getListaMedia()).count();
+        });
+
+
+        return num1;
     }
 
 
