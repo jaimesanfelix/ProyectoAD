@@ -3,6 +3,7 @@ package es.ieseduardoprimo.stream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 import com.mysql.cj.x.protobuf.MysqlxDatatypes.Array;
@@ -82,6 +83,61 @@ public class ConsultasHotel {
             System.out.println("hotels: " + hotelsMap); */
 
         return listaHoteles.stream().map(h -> h.getListaSalas()).flatMap(s -> s.stream()).map(s -> s.getListaMedia()).flatMap(m -> m.stream()).filter(m -> m.getNombre().equals("Television")).collect(Collectors.toList());
+    }
+
+    public List<Media> cargarListaMedia(){
+        Media m1 = new Media(1, "Television");
+        Media m2 = new Media(2, "Radio");
+        Media m3 = new Media(3, "Video");
+        Media m4 = new Media(4, "Internet");
+
+        List<Media> listaMedia = new ArrayList<Media>();
+        listaMedia.add(m1);
+        listaMedia.add(m2);
+        listaMedia.add(m3);
+        listaMedia.add(m4);
+
+        return listaMedia;        
+    }
+
+    public Long getNumeroMedia(List<Hotel> listaHoteles, String nombreHotel, String media){
+        Long numMedias = listaHoteles.stream().filter(h -> h.getNombre().equals(nombreHotel)).map(h -> h.getListaSalas()).flatMap(s -> s.stream()).map(s -> s.getListaMedia()).flatMap(m -> m.stream()).filter(m -> m.getNombre().equals(media)).count();
+        //System.out.println("getNumeroMedia del hotel: " + nombreHotel + " media = " + media + " num = " + numMedias);
+        return numMedias;
+    }
+
+    Long numTelevision;
+    Long numInternet;
+    int i;
+    Long numMedias;
+    Long mayorQue = (long) 0;
+    String numeroDeMedias = "";
+    public String getMedioMasUtilizado(List<Hotel> listaHoteles, List<Media> listaMedias){
+        //Recorremos los hoteles
+        List<String> hList = listaHoteles.stream().map(h -> h.getNombre()).collect(Collectors.toList());
+        
+        hList.forEach(h -> {
+            for (i = 0; i < listaMedias.size(); i++) {
+                //System.out.println("Hotel: " + h);
+                numMedias = getNumeroMedia(listaHoteles, h, listaMedias.get(i).getNombre());
+                if (numMedias > mayorQue) {
+                    mayorQue = numMedias;
+                }
+                numeroDeMedias = numeroDeMedias.concat("Para el hotel " + (i+1) + " la media mas utilizada es: " + mayorQue + "\n");
+                //System.out.printf("Total de " + listaMedias.get(i).getNombre() + ": [%s]\n", numMedias);
+            }
+        });
+
+        /* hList.forEach(h -> {
+            System.out.println("Hotel: " + h);
+            numTelevision = getNumeroMedia(listaHoteles, h, "Television");
+            System.out.printf("Total de televisiones: [%s]\n", numTelevision);
+            numInternet = getNumeroMedia(listaHoteles, h, "Internet");
+            System.out.printf("Total de televisiones: [%s]\n", numInternet);
+            System.out.println();
+        
+        }); */
+        return numeroDeMedias;
     }
 
     public Long getNumeroHabitaciones(List<Hotel> listaHoteles, String nombreHotel){
