@@ -30,7 +30,6 @@ public final class App {
     //Completar InMemoryRepositoryManager, InMemoryHotelRepository y los InMemoryRepository de media y sala
     //Crear metodos para cada apartado del ejercicio 3 Streams
     //No sacar nada por pantalla en el ejercicio 3 solo recoger los datos con los metodos para utilizarlos mas adelante
-    
     public static void main(String[] args) {
 
         System.out.println("Vamos a generar XML a partir de la base de datos ajedrez");
@@ -71,8 +70,7 @@ public final class App {
             Long getMedioMasUtilizadoPorHotel = ch.getMedioMasUtilizadoPorHotel(listaHoteles);
             Long getNumeroMedia = ch.getNumeroMedia(listaHoteles, "hotel2", "Television");
             System.out.println("---------------------------------------------------");
-            String getMedioMasUtilizado = ch.getMedioMasUtilizado(listaHoteles, listaMedias);
-            System.out.println(getMedioMasUtilizado);
+            ArrayList<String> getMedioMasUtilizado = ch.getMedioMasUtilizado(listaHoteles, listaMedias);
             System.out.println("---------------------------------------------------");
             listaNombreHoteles.forEach(System.out::println);
             System.out.println("\n");
@@ -80,7 +78,7 @@ public final class App {
             System.out.println("/");
             System.out.println("\nEl numero de habitaciones del hotel2 es de " + numeroHabitaciones);
             System.out.println("\nEl hotel con mas habitaciones es " + getHotelConMayorNumeroDeHabitaciones);
-            System.out.println("\n El medio mas utilizado es: " + getMedioMasUtilizadoPorHotel);
+            getMedioMasUtilizado.forEach(System.out::println);
             
 
             String id,nombre,telefono;

@@ -82,7 +82,7 @@ public class JdbcSalaRepository implements SalaRepository {
 
         try {
             ps = con.prepareStatement(insert);
-            ps.setInt(1, entity.getId());
+            ps.setString(1, entity.getId());
             ps.setInt(2, hotel.getId());
 
             if (ps.executeUpdate() == 1) {
@@ -110,7 +110,7 @@ public class JdbcSalaRepository implements SalaRepository {
 
         try {
             ps = con.prepareStatement(update);
-            ps.setInt(1, entity.getId());
+            ps.setString(1, entity.getId());
             ps.setInt(2, hotel.getId());
 
             if (ps.executeUpdate() == 1) {

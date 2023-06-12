@@ -6,11 +6,22 @@ import java.util.Map;
 import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
-import com.mysql.cj.x.protobuf.MysqlxDatatypes.Array;
-
 import es.ieseduardoprimo.model.Hotel;
 import es.ieseduardoprimo.model.Media;
 import es.ieseduardoprimo.model.Sala;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
+@AllArgsConstructor
+class ContarMedias {
+
+    private String media;
+    private Long num;
+    
+} 
 
 public class ConsultasHotel {
 
@@ -51,6 +62,8 @@ public class ConsultasHotel {
         Media m4 = new Media(4, "Internet");
 
         s1.setMedia(m1);
+        s1.setMedia(m1);
+        s1.setMedia(m1);
         s1.setMedia(m2);
         s1.setMedia(m3);
         s1.setMedia(m4);
@@ -59,6 +72,7 @@ public class ConsultasHotel {
         s2.setMedia(m4);
         s2.setMedia(m4);
 
+        s3.setMedia(m1);
         s3.setMedia(m1);
         s3.setMedia(m3);
         s3.setMedia(m3);
@@ -111,21 +125,27 @@ public class ConsultasHotel {
     int i;
     Long numMedias;
     Long mayorQue = (long) 0;
-    String numeroDeMedias = "";
-    public String getMedioMasUtilizado(List<Hotel> listaHoteles, List<Media> listaMedias){
+    ContarMedias media;
+    ArrayList<ContarMedias> medias = new ArrayList<ContarMedias>();
+    ArrayList<String> mediaAEnviar = new ArrayList<String>();
+    public ArrayList<String> getMedioMasUtilizado(List<Hotel> listaHoteles, List<Media> listaMedias){
         //Recorremos los hoteles
         List<String> hList = listaHoteles.stream().map(h -> h.getNombre()).collect(Collectors.toList());
         
         hList.forEach(h -> {
+            medias = new ArrayList<ContarMedias>();
             for (i = 0; i < listaMedias.size(); i++) {
-                //System.out.println("Hotel: " + h);
+                /* System.out.println("Hotel: " + h); */
                 numMedias = getNumeroMedia(listaHoteles, h, listaMedias.get(i).getNombre());
-                if (numMedias > mayorQue) {
-                    mayorQue = numMedias;
-                }
-                numeroDeMedias = numeroDeMedias.concat("Para el hotel " + (i+1) + " la media mas utilizada es: " + mayorQue + "\n");
+                ContarMedias contarMedias = new ContarMedias(listaMedias.get(i).getNombre(), numMedias);
+                medias.add(contarMedias);                
                 //System.out.printf("Total de " + listaMedias.get(i).getNombre() + ": [%s]\n", numMedias);
             }
+            System.out.println();
+            media = medioMasUtilizado(medias);
+            mediaAEnviar.add("El medio mas utilizado del hotel " + h + " es " + media.getMedia() + " y tiene " + media.getNum() + " unidades");
+
+            //System.out.println("Hotel " + h + " el medio mas utilizado es " + media);
         });
 
         /* hList.forEach(h -> {
@@ -137,7 +157,18 @@ public class ConsultasHotel {
             System.out.println();
         
         }); */
-        return numeroDeMedias;
+        return mediaAEnviar;
+    }
+
+    public ContarMedias medioMasUtilizado(ArrayList<ContarMedias> contarMedias){
+        ContarMedias max = contarMedias.get(0);
+        for (int i = 0; i < contarMedias.size(); i++) {
+            if (contarMedias.get(i).getNum() > max.getNum()) {
+                max = contarMedias.get(i);
+            }
+        }
+        /* System.out.println("numMedias es " + max.getNum() + " media = " + max.getMedia()); */
+        return max;
     }
 
     public Long getNumeroHabitaciones(List<Hotel> listaHoteles, String nombreHotel){
@@ -185,9 +216,9 @@ public class ConsultasHotel {
     }
 
 
-    public void procesarStreams() {
+   /*  public void procesarStreams() {
 
-       /*  listaHoteles.stream().map((h) -> h.getNombre()).forEach(System.out::println);
+        listaHoteles.stream().map((h) -> h.getNombre()).forEach(System.out::println);
 
         System.out.println("Stream de nombre de hotel con television");
         listaHoteles.stream().map(h -> h.getListaSalas()).flatMap(s -> s.stream()).filter(s -> s.getIdMedia(1)).map(s -> s.getListaMedia()).flatMap(salas -> salas.stream()).map((Sala s) -> s.getNombre().equals("Television")).forEach(System.out::println);
@@ -205,8 +236,8 @@ public class ConsultasHotel {
         System.out.println("Fin contar habitaciones hotel2\n");
 
         System.out.println("Numero habitaciones por hotel3: " + listaHoteles.stream().filter(h -> h.getId() == 3).map(h -> h.getListaSalas()).flatMap(salas -> salas.stream()).map((Sala s) -> s.getId()).count());
-        System.out.println("Fin contar habitaciones hotel3\n"); */
+        System.out.println("Fin contar habitaciones hotel3\n");
 
-    }
+    } */
 
 }
