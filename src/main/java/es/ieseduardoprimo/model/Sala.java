@@ -19,7 +19,7 @@ public class Sala {
     @Id
     private String id;
 
-    private Hotel hotel;
+    private Hotel hotel_id;
 
     private List<Media> listaMedias = new ArrayList<Media>();
 
@@ -53,9 +53,9 @@ public class Sala {
      * @param id
      * @param hotel
      */
-    public Sala(String id, Hotel hotel) {
+    public Sala(String id, Hotel hotel_id) {
         this.id = id;
-        this.hotel = hotel;
+        this.hotel_id = hotel_id;
     }
 
     public Sala(String id){
@@ -79,14 +79,14 @@ public class Sala {
     /**
      * @param hotel the hotel to set
      */
-    public void setHotel(Hotel hotel) {
-        this.hotel = hotel;
+    public void setHotel(Hotel hotel_id) {
+        this.hotel_id = hotel_id;
     }
 
     @ManyToOne
     @JoinColumn(name = "hotel_id", referencedColumnName = "id", nullable = false)
-    public Hotel getHotel(){
-        return hotel;
+    public Hotel getHotel_id(){
+        return hotel_id;
     }
 
 }

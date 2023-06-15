@@ -23,7 +23,7 @@ public class Hotel {
     private String nombre;
     @Column(name = "telephone")
     @NonNull
-    private int telefono;
+    private String telefono;
 
     private Collection<Sala> salas;
     private List<Sala> listaSalas = new ArrayList<Sala>();
@@ -38,7 +38,7 @@ public class Hotel {
      * @param nombre
      * @param telefono
      */
-    public Hotel(int id, String nombre, int telefono) {
+    public Hotel(int id, String nombre, String telefono) {
         this.id = id;
         this.nombre = nombre;
         this.telefono = telefono;
@@ -70,13 +70,13 @@ public class Hotel {
     /**
      * @return the telefono
      */
-    public int getTelefono() {
+    public String getTelefono() {
         return telefono;
     }
     /**
      * @param telefono the telefono to set
      */
-    public void setTelefono(int telefono) {
+    public void setTelefono(String telefono) {
         this.telefono = telefono;
     }
 

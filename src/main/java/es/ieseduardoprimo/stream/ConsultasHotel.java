@@ -28,9 +28,9 @@ public class ConsultasHotel {
 
     public List<Hotel> cargarDatosHoteles(){
 
-        Hotel h1 = new Hotel(1, "hotel1", 111111);
-        Hotel h2 = new Hotel(2, "hotel2", 222222);
-        Hotel h3 = new Hotel(3, "hotel3", 333333);
+        Hotel h1 = new Hotel(1, "hotel1", "111111");
+        Hotel h2 = new Hotel(2, "hotel2", "222222");
+        Hotel h3 = new Hotel(3, "hotel3", "333333");
 
         List<Hotel> listaHoteles = new ArrayList<Hotel>();
         listaHoteles.add(h1);
