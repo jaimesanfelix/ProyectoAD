@@ -21,7 +21,6 @@ import org.w3c.dom.Element;
 
 import es.ieseduardoprimo.model.Hotel;
 import es.ieseduardoprimo.model.Media;
-import es.ieseduardoprimo.model.Sala;
 import es.ieseduardoprimo.stream.ConsultasHotel;
 
 
@@ -77,6 +76,9 @@ public final class App {
             System.out.println("\nEl numero de habitaciones del hotel2 es de " + numeroHabitaciones);
             System.out.println("\nEl hotel con mas habitaciones es " + getHotelConMayorNumeroDeHabitaciones);
             getMedioMasUtilizado.forEach(System.out::println);
+
+            RestClientDemo restClientDemo = new RestClientDemo();
+            restClientDemo.runHotel();
             
 
             String id,nombre,telefono;

@@ -1,8 +1,10 @@
 package es.ieseduardoprimo.repository;
 
+import es.ieseduardoprimo.mapper.SalaMapper;
 import es.ieseduardoprimo.repository.hotel.HotelRepository;
 import es.ieseduardoprimo.repository.media.MediaRepository;
 import es.ieseduardoprimo.repository.sala.SalaRepository;
+import es.ieseduardoprimo.rest.APIRestConfig;
 
 public class XMLRepositoryManager implements RepositoryManager {
 

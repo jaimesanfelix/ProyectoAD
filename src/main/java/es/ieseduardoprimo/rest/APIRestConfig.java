@@ -1,18 +1,19 @@
 package es.ieseduardoprimo.rest;
 
 public class APIRestConfig {
-/*  IP del servidor, se puede leer de properties
+    //IP del servidor, se puede leer de properties
     private static final String server = "localhost";
 
-    Puerto del microservicio
+    //Puerto del microservicio
     private static final String port = "4000";
 
-    endpint del microservicio
-    private static final String endpoint = "/rest/"; */
+    //endpint del microservicio
+    private static final String endpoint = "/rest/";
     // IP del servicio
-    public static final String API_URL = "https://sheetdb.io/api/v1/5tx3h841vv55j";
+    public static String API_URL = "https://sheetdb.io/api/v1/5tx3h841vv55j/";
 
     private APIRestConfig() {
+
     }
 
     // Constructor del servicio con los elementos de la interfaz

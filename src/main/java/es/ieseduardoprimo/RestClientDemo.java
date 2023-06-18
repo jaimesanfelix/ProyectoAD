@@ -1,9 +1,6 @@
 package es.ieseduardoprimo;
 
 import java.io.IOException;
-import java.time.Instant;
-import java.util.Collections;
-import java.util.Date;
 import java.util.List;
 
 import es.ieseduardoprimo.dto.HotelDTO;
@@ -20,21 +17,22 @@ public class RestClientDemo {
     private HotelMapper mapperHot = new HotelMapper();
     private SalaMapper mapperSal = new SalaMapper();
 
-    public void runDepartamento() {
-        System.out.println("Cliente REST EndPoint Departamento");
-        //departamentGetAll();
-        departamentGetById();
+    public void runHotel() {
+        System.out.println("Cliente REST EndPoint Hoteles");
+        HotelesGetAll();
+        HotelesGetById();
+        /*
         departamentoGetProgramadores();
         departamentoGetJefe();
         //departamentoPost();
         departamentoAñadirProgramador();
         departamentoEliminarProgramador();
         //departamentoPut();
-        //departamentoDelete();
+        //departamentoDelete(); */
 
     }
 
-    public void runProgramador() {
+    /* public void runProgramador() {
         System.out.println("Cliente REST EndPoint Programador");
         programadorGetAll();
         programadorGetById();
@@ -44,9 +42,9 @@ public class RestClientDemo {
         //programadorPost();
         //programadorPut();
         //programadorDelete();
-    }
+    } */
 
-    private void getProgramadorByLenguaje() {
+   /*  private void getProgramadorByLenguaje() {
         System.out.println("GET Programador por lenguaje");
         try {
             Response<List<ProgramadorDTO>> response = restService.programadorGetByLenguaje("Java").execute();
@@ -62,9 +60,9 @@ public class RestClientDemo {
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
+    } */
 
-    private void getProgramadorByPerfil() {
+   /*  private void getProgramadorByPerfil() {
         System.out.println("GET Programador por perfil");
         try {
             Response<List<ProgramadorDTO>> response = restService.programadorGetByPerfil("FullStack").execute();
@@ -81,8 +79,8 @@ public class RestClientDemo {
             e.printStackTrace();
         }
     }
-
-    private void programadorDelete() {
+ */
+    /* private void programadorDelete() {
         System.out.println("DELETE Programador");
         try {
             Response<ProgramadorDTO> response = restService.programadorDelete("111").execute();
@@ -99,9 +97,9 @@ public class RestClientDemo {
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
+    } */
 
-    private void programadorPut() {
+    /* private void programadorPut() {
         System.out.println("PUT Programador");
         ProgramadorModifyDTO prog = new ProgramadorModifyDTO();
         prog.setNombre("Prueba Update");
@@ -125,9 +123,9 @@ public class RestClientDemo {
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
+    } */
 
-    private void programadorPost() {
+    /* private void programadorPost() {
         System.out.println("POST Programador");
         ProgramadorModifyDTO prog = new ProgramadorModifyDTO();
         prog.setNombre("Prueba Insert");
@@ -151,9 +149,9 @@ public class RestClientDemo {
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
+    } */
 
-    private void programadorGetById() {
+    /* private void programadorGetById() {
         System.out.println("GET Programador");
         try {
             Response<ProgramadorDTO> response = restService.programadorGetById("111").execute();
@@ -171,8 +169,8 @@ public class RestClientDemo {
             e.printStackTrace();
         }
     }
-
-    private void programadorGetAll() {
+ */
+   /*  private void programadorGetAll() {
         System.out.println("GET ALL Programadores");
         try {
             Response<List<ProgramadorDTO>> response = restService.programadorGetAll().execute();
@@ -190,8 +188,8 @@ public class RestClientDemo {
             e.printStackTrace();
         }
     }
-
-    private void departamentoAñadirProgramador() {
+ */
+   /*  private void departamentoAñadirProgramador() {
         System.out.println("PATCH Departamento Añadir Programador");
         DepartamentoModifyDTO dto = new DepartamentoModifyDTO();
         try {
@@ -297,9 +295,9 @@ public class RestClientDemo {
             e.printStackTrace();
         }
     }
+ */
 
-
-    private void HotelGetAll() {
+    private void HotelesGetAll() {
         System.out.println("GET ALL Hoteles");
         try {
             Response<List<HotelDTO>> response = restService.HotelGetAll().execute();
@@ -317,19 +315,19 @@ public class RestClientDemo {
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
+    } 
 
 
 
-    private void departamentGetById() {
-        System.out.println("GET Departamentos By ID 111");
+    private void HotelesGetById() {
+        System.out.println("GET Hoteles By ID 1");
         try {
-            Response<DepartamentoDTO> response = restService.departamentoGetById("111").execute();
+            Response<HotelDTO> response = restService.HotelGetById(1).execute();
             // La hemos obtenido correctamente
             if (response.isSuccessful() && response.body() != null) {
                 System.out.println("Request Done! - Código: " + response.code());
                 System.out.println("Resultado de GET By Id");
-                Departamento result = mapperDep.fromDTO(response.body());
+                Hotel result = mapperHot.fromDTO(response.body());
                 System.out.println(result);
             }
             else {
@@ -339,7 +337,7 @@ public class RestClientDemo {
             e.printStackTrace();
         }
     }
-
+    /*
     private void departamentoGetProgramadores() {
         System.out.println("GET Programadores por Departamentos ID 111");
         try {
@@ -377,5 +375,5 @@ public class RestClientDemo {
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
+    } */
 }

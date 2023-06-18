@@ -5,17 +5,19 @@ import java.util.List;
 import es.ieseduardoprimo.dto.HotelDTO;
 import retrofit2.Call;
 import retrofit2.http.GET;
+import retrofit2.http.Path;
 
-public class AccesoDatosRest {
+public interface AccesoDatosRest {
 
     // Hotels, obtener todos
-    @GET("Hotel")
+    @GET("?sheet=Hotel")
     Call<List<HotelDTO>> HotelGetAll();
-
-   /*  // Obtener uno producto por ID
-    @GET("Hotel/{id}")
-    Call<HotelDTO> HotelGetById(@Path("id") String id);
-
+    
+    // Obtener uno producto por ID
+    @GET("search?id=&sheet=Hotel")
+    Call<HotelDTO> HotelGetById(@Path("id") int id);
+    //search?id=1&sheet=Hotel
+    /* 
     // Obtenemos todos los programadores
     @GET("Hotel/{id}/programadores")
     Call<List<ProgramadorDTO>> HotelGetProgramadores(@Path("id") String id);
